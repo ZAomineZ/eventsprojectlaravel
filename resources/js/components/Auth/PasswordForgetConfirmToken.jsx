@@ -182,7 +182,7 @@ export default class PasswordForgetConfirmToken extends PureComponent
                                             <span className="font-size-xl text-dual-primary-dark">Events</span>
                                             <span className="font-size-xl">Base</span>
                                         </a>
-                                        <h1 className="h3 font-w700 mt-30 mb-10"> Don\'t worry, we\'ve got your
+                                        <h1 className="h3 font-w700 mt-30 mb-10"> Don't worry, we've got your
                                             back</h1>
                                         <h2 className="h5 font-w400 text-muted mb-0">Please enter your new password</h2>
                                     </div>

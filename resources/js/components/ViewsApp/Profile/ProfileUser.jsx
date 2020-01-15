@@ -18,7 +18,10 @@ export default class ProfileUser extends PureComponent {
             events: [],
             image_user: '',
             friendRequest: null,
-            friends: []
+            friends: [],
+
+            loading: true,
+            loaded: false
         };
         this.handleAddFriend = this.handleAddFriend.bind(this);
         this.handleRemoveFriend = this.handleRemoveFriend.bind(this)
@@ -62,8 +65,11 @@ export default class ProfileUser extends PureComponent {
                             friendRequest: response.data.data.friendRequest,
                             friends: response.data.data.friends && response.data.data.friends.length !== 0 ?
                                 Object.values(response.data.data.friends.data)
-                                : []
-                        })
+                                : [],
+                            loading: false
+                        });
+
+                        setTimeout(() => this.setState({loaded: true}), 500);
                     } else {
                         NotifAppMessage('danger', response.data.data.message, 'Error found !!!');
                         this.props.history.push('/home');
@@ -221,6 +227,13 @@ export default class ProfileUser extends PureComponent {
 
         return (
             <HeaderHome>
+                {!this.state.loaded &&
+                <div className={`load${this.state.loading ? '' : ' loaded'}`}>
+                    <div className="load__icon-wrap">
+                        <i className="fa fa-3x fa-cog fa-spin"></i>
+                    </div>
+                </div>
+                }
                 <main id='main-container'>
                     <div className="bg-image bg-image-bottom img-background-japan">
                         <div className="bg-primary-dark-op py-30">
